@@ -13,7 +13,7 @@ if(!require(rstan)) install.packages("rstan")
 
 # Install cirque from github
 if(!require(devtools)) install.packages("devtools")
-devtools::install_github("xiao-lu-research/cirque")
+devtools::install_github("xiao-lu-research/qmix")
 ```
 
 
