@@ -13,8 +13,43 @@
 #'
 coef.qmix <- coefficients.qmix <- function(object, ...) {
   coefmat <-
-    cbind(matrix(object$means, nrow = object$npars), t(object$ulbs))
-  row.names(coefmat) = c(object$xnames)
+    cbind(matrix(object$means[1:(object$npars * object$nmix)], nrow = object$npars * object$nmix),
+          t(object$ulbs[, 1:(object$npars * object$nmix)]))
+  row.names(coefmat) <-
+    paste0(rep(paste0("C", 1:object$nmix, ": "), object$nmix),
+           rep(object$xnames, each = object$nmix))
+  coef_theta <-
+    cbind(matrix(object$means[(object$npars * object$nmix + 1):(object$npars * object$nmix + object$nmix)], nrow = object$nmix), t(object$ulbs[, (object$npars * object$nmix + 1):(object$npars * object$nmix + object$nmix)]))
+  row.names(coef_theta) <-
+    paste0("C", 1:object$nmix, ": proportion")
+  coefmat <- rbind(coefmat, coef_theta)
+  if (object$binarylogic == FALSE) {
+    coef_sigma <-
+      cbind(matrix(object$means[(object$npars * object$nmix + object$nmix + 1):(object$npars * object$nmix + 2 *
+                                                                                  object$nmix)], nrow = object$nmix), t(object$ulbs[, (object$npars * object$nmix + object$nmix + 1):(object$npars * object$nmix + 2 *
+                                                                                                                                                                                        object$nmix)]))
+    row.names(coef_sigma) <- paste0("C", 1:object$nmix, ": sigma")
+    coefmat <- rbind(coefmat, coef_sigma)
+  }
+
+  if (object$binarylogic == FALSE & object$design == "random") {
+    coef_p <-
+      cbind(matrix(object$means[(object$npars * object$nmix + 2 * object$nmix + 1):(object$npars * object$nmix + 3 *
+                                                                                      object$nmix)], nrow = object$nmix), t(object$ulbs[, (object$npars * object$nmix + 2 *
+                                                                                                                                             object$nmix + 1):(object$npars * object$nmix + 3 * object$nmix)]))
+    row.names(coef_p) <- paste0("C", 1:object$nmix, ": quantile")
+    coefmat <- rbind(coefmat, coef_p)
+  }
+
+  if (object$binarylogic == TRUE & object$design == "random") {
+    coef_p <-
+      cbind(matrix(object$means[(object$npars * object$nmix + object$nmix + 1):(object$npars * object$nmix + 2 *
+                                                                                  object$nmix)], nrow = object$nmix), t(object$ulbs[, (object$npars * object$nmix + object$nmix + 1):(object$npars * object$nmix + 2 *
+                                                                                                                                                                                        object$nmix)]))
+    row.names(coef_p) <- paste0("C", 1:object$nmix, ": quantile")
+    coefmat <- rbind(coefmat, coef_p)
+  }
+
   colnames(coefmat) <- c("Estimate", "LB", "UB")
   return(coefmat)
 }
@@ -66,6 +101,10 @@ print_text.qmix <- function(object, digits = 3) {
   )
   cat("Coefficients:\n")
   print(round(coef(object), digits))
+  cat("\n")
+  names(object$thetas) = paste0("C", 1:object$nmix)
+  cat("Estimated proportions of each mixture component: ",
+      object$thetas)
   cat("\n")
 }
 

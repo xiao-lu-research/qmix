@@ -1,14 +1,9 @@
 Package: qmix
-Title: qmix: An R Package for Estimating Finite Quantile Mixture Models
-Version: 0.0.0.9000
+Title: Finite Quantile Mixture Models
+Version: 0.1.1.0
 Author: Xiao Lu
-Maintainer: Xiao LU <xiao.lu@gess.uni-mannheim.de>
-Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com")
-Description: This package provides basic functionalities to estimate finite quantile mixture models using MCMC methods. 
+Maintainer: Xiao Lu <xiao.lu.research@gmail.com>
+Description: Estimates finite quantile mixture models using MCMC methods. The finite quantile mixture models include both fixed- and random-quantile specifications that are applicable to both continuous and binary dependent variables. Tools are available to assess convergence and summarize the estimation results. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

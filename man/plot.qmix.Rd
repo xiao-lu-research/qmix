@@ -4,13 +4,13 @@
 \alias{plot.qmix}
 \title{Plot qmix object}
 \usage{
-\method{plot}{qmix}(x, type = "trace", ...)
+\method{plot}{qmix}(x, type = "coef", ...)
 }
 \arguments{
 \item{x}{A \code{qmix} object to be plotted.}
 
 \item{type}{Character string giving the type of plotting. The options are
-\code{"trace"} for trace plots, \code{"coef"} for coefficient plots.}
+\code{"trace"} for trace plots, \code{"coef"} for coefficient plots. The default is "coef".}
 
 \item{...}{Additional arguments to be passed to subsequent plot functions.}
 }
