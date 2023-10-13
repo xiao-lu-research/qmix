@@ -2,15 +2,18 @@
 % Please edit documentation in R/plotfun.R
 \name{plot_trace.qmix}
 \alias{plot_trace.qmix}
-\title{Make traceplots for qmix}
+\title{Trace plots for qmix}
 \usage{
 plot_trace.qmix(object, ...)
 }
 \arguments{
-\item{object}{A \code{qmix} object.}
+\item{object}{A \code{qmix} object from running the main function \code{\link{qmix}}.}
 
-\item{...}{Additional parameters to be passed.}
+\item{...}{Additional parameters to be passed to \code{\link[rstan]{traceplot}}.}
+}
+\value{
+None.
 }
 \description{
-Plot traceplots from a \code{qmix} object.
+\code{plot_trace.qmix} is used to produce trace plots from a \code{qmix} object from the main function \code{\link{qmix}}.
 }

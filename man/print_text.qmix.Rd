@@ -11,6 +11,9 @@ print_text.qmix(object, digits = 3)
 
 \item{digits}{Number of digits to display.}
 }
+\value{
+None.
+}
 \description{
 Print the main results from a \code{qmix} object.
 }

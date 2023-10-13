@@ -2,15 +2,18 @@
 % Please edit documentation in R/plotfun.R
 \name{plot_coef.qmix}
 \alias{plot_coef.qmix}
-\title{Make coefficient plots for qmix}
+\title{Make coefficient plots for a \code{qmix} object}
 \usage{
 plot_coef.qmix(object, ...)
 }
 \arguments{
-\item{object}{A \code{qmix} object.}
+\item{object}{A \code{qmix} object from running the main function \code{\link{qmix}}.}
 
-\item{...}{Additional parameters to be passed.}
+\item{...}{Additional parameters to be passed to \code{\link[rstan]{stan_plot}}.}
+}
+\value{
+None.
 }
 \description{
-Plot traceplots from a \code{qmix} object.
+\code{plot_coef.qmix} is used to produce coefficient plots from a \code{qmix} object.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/source_fun.R
 \name{rald}
 \alias{rald}
-\title{Random number generator of ALD}
+\title{Random number generator of asymmetric Laplace distributions}
 \usage{
 rald(n, mu, p, sigma)
 }
@@ -19,5 +19,5 @@ rald(n, mu, p, sigma)
 random numbers.
 }
 \description{
-Random number generator of ALD
+\code{rald} generates random numbers from asymmetric Laplace distributions.
 }

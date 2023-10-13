@@ -2,7 +2,7 @@
 % Please edit documentation in R/source_fun.R
 \name{dald}
 \alias{dald}
-\title{Probability density function of ALD}
+\title{Probability density function of asymmetric Laplace distributions}
 \usage{
 dald(x, mu, p, sigma)
 }
@@ -19,5 +19,5 @@ dald(x, mu, p, sigma)
 probability density of \code{x}.
 }
 \description{
-Probability density function of ALD
+\code{dald} calculates probability densities of asymmetric Laplace distributions.
 }

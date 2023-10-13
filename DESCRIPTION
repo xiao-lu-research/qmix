@@ -1,12 +1,11 @@
 Package: qmix
 Title: Finite Quantile Mixture Models
-Version: 0.1.1.0
+Version: 0.1.2.3
 Author: Xiao Lu
 Maintainer: Xiao Lu <xiao.lu.research@gmail.com>
-Description: Estimates finite quantile mixture models using MCMC methods. The finite quantile mixture models include both fixed- and random-quantile specifications that are applicable to both continuous and binary dependent variables. Tools are available to assess convergence and summarize the estimation results. 
+Description: Estimates finite quantile mixture models using Markov chain Monte Carlo methods. The finite quantile mixture models include both fixed- and random-quantile specifications that are applicable to both continuous and binary dependent variables. Tools are available to assess convergence and summarize the estimation results. 
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
 Biarch: true
 Depends: 
     R (>= 3.4.0)
@@ -15,6 +14,8 @@ Imports:
     Formula,
     Rcpp (>= 0.12.0),
     rstan (>= 2.18.1),
+    rstantools,
+    ggplot2
 LinkingTo: 
     BH (>= 1.66.0),
     Rcpp (>= 0.12.0),
@@ -22,4 +23,4 @@ LinkingTo:
     rstan (>= 2.18.1),
     StanHeaders (>= 2.18.0)
 SystemRequirements: GNU make
-RoxygenNote: 6.1.1
+RoxygenNote: 7.2.3

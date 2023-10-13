@@ -2,7 +2,7 @@
 % Please edit documentation in R/source_fun.R
 \name{inverse}
 \alias{inverse}
-\title{Probability density function of ALD}
+\title{Inverse function}
 \usage{
 inverse(f, mu, p, sigma, lower = -10000, upper = 10000)
 }
@@ -23,5 +23,5 @@ inverse(f, mu, p, sigma, lower = -10000, upper = 10000)
 inversed pald
 }
 \description{
-Probability density function of ALD
+\code{inverse} generates inverse function of any given function.
 }

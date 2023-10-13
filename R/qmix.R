@@ -42,9 +42,11 @@ is.dichotomous <- function(x) {
 #' @param thin Thinning parameter.
 #' @param CIsize The size of posterior confidence interval.
 #' @param nchain The number of parallel chains.
+#' @param init The initial values for sampling.
 #' @param seeds Random seeds to replicate the results.
 #' @param offset Offset values to enhance sampling stability. The default value is 1e-20.
 #' @param inverse_distr If FALSE, the ALD will not be reversed. The default is FALSE.
+#' @param parallel If TRUE, multiple cores will be used for parallel computing. The default is TRUE.
 #'
 #' @return A \code{qmix} object. An object of class \code{qmix} contains the following elements
 #'
@@ -126,9 +128,11 @@ qmix <- function(formula,
                  thin = 1,
                  CIsize = .95,
                  nchain = 1,
+                 init = NULL,
                  seeds = 12345,
                  offset = 1e-20,
-                 inverse_distr = FALSE) {
+                 inverse_distr = FALSE,
+                 parallel = TRUE) {
   if (is.null(burnin))
     burnin <- floor(nsim / 2)
   if (burnin < 0)
@@ -163,6 +167,11 @@ qmix <- function(formula,
   if (!all(q > 0 &
            q < 1))
     stop("The specified quantiles are out of range. The values must be in (0,1).")
+
+  old <- options(stringsAsFactors = FALSE)
+  if (parallel == TRUE){
+    options(mc.cores = parallel::detectCores())
+  }
 
   f <- Formula::Formula(formula)
   data <- model.frame(f, data)
@@ -258,16 +267,31 @@ qmix <- function(formula,
     pars <- c("beta", "theta", "sigma", "p")
   }
 
-  stanout <- sampling(
-    stanmodel,
-    data = datlist,
-    pars = pars,
-    seed = seeds,
-    iter = nsim,
-    thin = thin,
-    warmup = burnin,
-    chains = nchain
-  )
+  if (!is.null(init)){
+    stanout <- sampling(
+      stanmodel,
+      data = datlist,
+      pars = pars,
+      seed = seeds,
+      iter = nsim,
+      thin = thin,
+      warmup = burnin,
+      chains = nchain,
+      init = init
+    )
+  } else {
+    stanout <- sampling(
+      stanmodel,
+      data = datlist,
+      pars = pars,
+      seed = seeds,
+      iter = nsim,
+      thin = thin,
+      warmup = burnin,
+      chains = nchain
+    )
+  }
+
 
   summaryout <- rstan::summary(stanout)$summary
 
@@ -310,7 +334,7 @@ qmix <- function(formula,
   out$thetas <-
     summaryout[(n_covariate * nmix + 1):(n_covariate * nmix + nmix), 1]
   out$binarylogic <- binarylogic
-
+  on.exit(options(old), add = TRUE)
   return(out)
 
 

@@ -2,14 +2,14 @@
 % Please edit documentation in R/printfun.R
 \name{coef.qmix}
 \alias{coef.qmix}
-\title{Extract qmix Coefficients}
+\title{Extract coefficients from a \code{qmix} object}
 \usage{
 \method{coef}{qmix}(object, ...)
 }
 \arguments{
-\item{object}{A \code{qmix} object.}
+\item{object}{A \code{qmix} object from running the main function \code{\link{qmix}}.}
 
-\item{...}{Further arguments passed to or from other methods.}
+\item{...}{Further arguments to be passed according to \code{\link[stats]{coef}}.}
 }
 \value{
 A table of coefficients with their corresponding lower and upper bounds.

@@ -2,15 +2,18 @@
 % Please edit documentation in R/printfun.R
 \name{print_mcmc.qmix}
 \alias{print_mcmc.qmix}
-\title{Print the mcmc results from a qmix object}
+\title{Print convergence diagnostics from a \code{qmix} object}
 \usage{
 print_mcmc.qmix(object, ...)
 }
 \arguments{
 \item{object}{A \code{qmix} object.}
 
-\item{...}{Additional arguments to be passed.}
+\item{...}{Additional arguments to be passed to the \code{print} function.}
+}
+\value{
+None.
 }
 \description{
-This prints a number of diagnostics about the results of a \code{qmix} objects
+\code{print_mcmc.qmix} prints a number of diagnostics about the convergence of a \code{qmix} objects.
 }

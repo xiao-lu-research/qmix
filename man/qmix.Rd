@@ -4,9 +4,23 @@
 \alias{qmix}
 \title{Fitting finite quantile mixture models}
 \usage{
-qmix(formula, data, nmix = 3, design = "fixed", q = NULL,
-  nsim = 1000, burnin = NULL, thin = 1, CIsize = 0.95,
-  nchain = 1, seeds = 12345, offset = 1e-20, inverse_distr = FALSE)
+qmix(
+  formula,
+  data,
+  nmix = 3,
+  design = "fixed",
+  q = NULL,
+  nsim = 1000,
+  burnin = NULL,
+  thin = 1,
+  CIsize = 0.95,
+  nchain = 1,
+  init = NULL,
+  seeds = 12345,
+  offset = 1e-20,
+  inverse_distr = FALSE,
+  parallel = TRUE
+)
 }
 \arguments{
 \item{formula}{An object of class "formula" (or one that can be
@@ -30,11 +44,15 @@ coerced to that class): a symbolic description of the model to be fitted.}
 
 \item{nchain}{The number of parallel chains.}
 
+\item{init}{The initial values for sampling.}
+
 \item{seeds}{Random seeds to replicate the results.}
 
 \item{offset}{Offset values to enhance sampling stability. The default value is 1e-20.}
 
 \item{inverse_distr}{If FALSE, the ALD will not be reversed. The default is FALSE.}
+
+\item{parallel}{If TRUE, multiple cores will be used for parallel computing. The default is TRUE.}
 }
 \value{
 A \code{qmix} object. An object of class \code{qmix} contains the following elements

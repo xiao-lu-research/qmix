@@ -2,7 +2,7 @@
 % Please edit documentation in R/printfun.R
 \name{print.qmix}
 \alias{print.qmix}
-\title{Print qmix object}
+\title{Print returns from a \code{qmix} object}
 \usage{
 \method{print}{qmix}(x, type = "text", ...)
 }
@@ -12,9 +12,15 @@
 \item{type}{Character string giving the type of printing, such as
 \code{"text"}, \code{"mcmc"}, \code{"coef"}.}
 
-\item{...}{Additional arguments to be passed to print functions.}
+\item{...}{Additional arguments to be passed to print functions (check the See Also section).}
+}
+\value{
+None.
 }
 \description{
 General print function for \code{qmix} objects, which dispatches the chosen type
 of printing to the corresponding function.
+}
+\seealso{
+\code{\link{print_text.qmix}}, \code{\link{print_mcmc.qmix}}, \code{\link{print_coef.qmix}}.
 }

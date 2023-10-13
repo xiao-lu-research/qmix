@@ -1,9 +1,9 @@
-#' Extract qmix Coefficients
+#' Extract coefficients from a \code{qmix} object
 #'
 #' Create a table of coefficient results from a \code{qmix} object.
 #'
-#' @param object A \code{qmix} object.
-#' @param ... Further arguments passed to or from other methods.
+#' @param object A \code{qmix} object from running the main function \code{\link{qmix}}.
+#' @param ... Further arguments to be passed according to \code{\link[stats]{coef}}.
 #'
 #' @return A table of coefficients with their corresponding lower and upper bounds.
 #' @export
@@ -16,7 +16,7 @@ coef.qmix <- coefficients.qmix <- function(object, ...) {
     cbind(matrix(object$means[1:(object$npars * object$nmix)], nrow = object$npars * object$nmix),
           t(object$ulbs[, 1:(object$npars * object$nmix)]))
   row.names(coefmat) <-
-    paste0(rep(paste0("C", 1:object$nmix, ": "), object$nmix),
+    paste0(rep(paste0("C", 1:object$nmix, ": "), object$npars),
            rep(object$xnames, each = object$nmix))
   coef_theta <-
     cbind(matrix(object$means[(object$npars * object$nmix + 1):(object$npars * object$nmix + object$nmix)], nrow = object$nmix), t(object$ulbs[, (object$npars * object$nmix + 1):(object$npars * object$nmix + object$nmix)]))
@@ -55,7 +55,7 @@ coef.qmix <- coefficients.qmix <- function(object, ...) {
 }
 
 
-#' Print qmix object
+#' Print returns from a \code{qmix} object
 #'
 #' General print function for \code{qmix} objects, which dispatches the chosen type
 #' of printing to the corresponding function.
@@ -63,8 +63,10 @@ coef.qmix <- coefficients.qmix <- function(object, ...) {
 #' @param x A \code{qmix} object to be printed.
 #' @param type Character string giving the type of printing, such as
 #'   \code{"text"}, \code{"mcmc"}, \code{"coef"}.
-#' @param ... Additional arguments to be passed to print functions.
+#' @param ... Additional arguments to be passed to print functions (check the See Also section).
 #'
+#' @return None.
+#' @seealso \code{\link{print_text.qmix}}, \code{\link{print_mcmc.qmix}}, \code{\link{print_coef.qmix}}.
 #' @export
 #'
 #'
@@ -80,6 +82,7 @@ print.qmix <- function(x, type = "text", ...) {
 #' @param object A \code{qmix} object.
 #' @param digits Number of digits to display.
 #'
+#' @return None.
 #' @export
 #'
 #'
@@ -109,14 +112,15 @@ print_text.qmix <- function(object, digits = 3) {
 }
 
 
-#' Print the mcmc results from a qmix object
+#' Print convergence diagnostics from a \code{qmix} object
 #'
-#' This prints a number of diagnostics about the results of a \code{qmix} objects
+#' \code{print_mcmc.qmix} prints a number of diagnostics about the convergence of a \code{qmix} objects.
 #'
 #'
 #' @param object A \code{qmix} object.
-#' @param ... Additional arguments to be passed.
+#' @param ... Additional arguments to be passed to the \code{print} function.
 #'
+#' @return None.
 #' @export
 #'
 #'
@@ -127,11 +131,14 @@ print_mcmc.qmix <- function(object, ...) {
 
 
 
-#' Print qmix coefficients
+#' Print coefficients of a \code{qmix} object
+#'
+#' \code{print_coef.qmix} prints out coefficients from a \code{qmix} object from running the main function \code{\link{qmix}}.
 #'
 #' @param object A \code{qmix} object.
 #' @param digits Number of digits to display.
 #'
+#' @return None.
 #' @export
 #'
 #'

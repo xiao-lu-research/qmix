@@ -2,7 +2,7 @@
 % Please edit documentation in R/source_fun.R
 \name{qald}
 \alias{qald}
-\title{Quantile function of ALD}
+\title{Quantile function of asymmetric Laplace distributions}
 \usage{
 qald(y, mu, p, sigma)
 }
@@ -19,5 +19,5 @@ qald(y, mu, p, sigma)
 quantile value.
 }
 \description{
-Quantile function of ALD
+\code{qald} calculates quantiles values of asymmetric Laplace distributions.
 }

@@ -10,11 +10,17 @@
 \item{x}{A \code{qmix} object to be plotted.}
 
 \item{type}{Character string giving the type of plotting. The options are
-\code{"trace"} for trace plots, \code{"coef"} for coefficient plots. The default is "coef".}
+\code{"trace"} for trace plots, \code{"coef"} for coefficient plots, \code{"effect"} for plots of substantive effects. The default is "coef".}
 
-\item{...}{Additional arguments to be passed to subsequent plot functions.}
+\item{...}{Additional arguments to be passed to subsequent plot functions (check the See Also section).}
+}
+\value{
+None.
 }
 \description{
 General plot function for \code{qmix} objects, which dispatches the chosen
 type of plotting to the corresponding function.
+}
+\seealso{
+\code{\link{plot_trace.qmix}} and \code{\link{plot_coef.qmix}}.
 }

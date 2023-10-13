@@ -2,7 +2,7 @@
 % Please edit documentation in R/source_fun.R
 \name{pald}
 \alias{pald}
-\title{Cumulative density function of ALD}
+\title{Cumulative density function of asymmetric Laplace distributions}
 \usage{
 pald(x, mu, p, sigma)
 }
@@ -19,5 +19,5 @@ pald(x, mu, p, sigma)
 cumulative probability density of \code{x}.
 }
 \description{
-Cumulative density function of ALD
+\code{pald} calculates cumulative densities of asymmetric Laplace distributions.
 }

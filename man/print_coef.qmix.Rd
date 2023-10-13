@@ -2,7 +2,7 @@
 % Please edit documentation in R/printfun.R
 \name{print_coef.qmix}
 \alias{print_coef.qmix}
-\title{Print qmix coefficients}
+\title{Print coefficients of a \code{qmix} object}
 \usage{
 print_coef.qmix(object, digits = 3)
 }
@@ -11,6 +11,9 @@ print_coef.qmix(object, digits = 3)
 
 \item{digits}{Number of digits to display.}
 }
+\value{
+None.
+}
 \description{
-Print qmix coefficients
+\code{print_coef.qmix} prints out coefficients from a \code{qmix} object from running the main function \code{\link{qmix}}.
 }
